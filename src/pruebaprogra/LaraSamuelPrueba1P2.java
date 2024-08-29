@@ -25,46 +25,70 @@ public class LaraSamuelPrueba1P2 {
         String arregloB[]=new String[cantidad];
         
         for (int indexA = 0; indexA < cantidad; indexA++) {
-            int aleatorioA=rndm.nextInt(20);
-            arregloA[indexA]=palabras[aleatorioA];
-            
-            int contadorA=arregloA[indexA].length()-1;
-            while(contadorA>0){
-                char letras = arregloA[indexA].charAt(contadorA);
-                contadorA--;
-                if(letras!=arregloA[indexA].charAt(contadorA)){
-                    aleatorioA=rndm.nextInt(20);
-                    arregloA[indexA]=palabras[aleatorioA];
+            boolean esPalindromo = false;
+            String palabra = "";
+
+            while (!esPalindromo) {
+                int aleatorioA = rndm.nextInt(palabras.length);
+                palabra = palabras[aleatorioA];
+                esPalindromo = true;
+
+                int longitudA = palabra.length();
+                for (int i = 0; i < longitudA / 2; i++) {
+                    if (palabra.charAt(i) != palabra.charAt(longitudA - i - 1)) {
+                        esPalindromo = false;
+                        break;
+                    }
                 }
             }
+
+            arregloA[indexA] = palabra;
         }
+        
         for (int indexB = 0; indexB < cantidad; indexB++) {
-            int aleatorioB=rndm.nextInt(20);
-            arregloB[indexB]=palabras[aleatorioB];
-            int contadorB=arregloB[indexB].length()-1;
-            
-            while(contadorB>0){
-                char letras = arregloB[indexB].charAt(contadorB);
-                contadorB--;
-                if(letras!=arregloB[indexB].charAt(contadorB)){
-                    aleatorioB=rndm.nextInt(20);
-                    arregloB[indexB]=palabras[aleatorioB];
+            boolean esPalindromo = false;
+            String palabra = "";
+
+            while (!esPalindromo) {
+                int aleatorioB = rndm.nextInt(palabras.length);
+                palabra = palabras[aleatorioB];
+                esPalindromo = true;
+
+                int longitubB = palabra.length();
+                for (int intPalindroma = 0; intPalindroma < longitubB / 2; intPalindroma++) {
+                    if (palabra.charAt(intPalindroma) != palabra.charAt(longitubB - intPalindroma - 1)) {
+                        esPalindromo = false;
+                        break;
+                    }
                 }
             }
+
+            arregloB[indexB] = palabra;
         }
-        //impresion de pantalla
-        System.out.println("Lista palabras palindroma arreglo A: ");
+        
+        // Impresión de los arreglos
+        System.out.println("Lista palabras palíndromas en el arreglo A:");
         for (int contListaA = 0; contListaA < cantidad; contListaA++) {
             System.out.println(arregloA[contListaA]);
         }
-        System.out.println("Lista palabras palindroma arreglo B: ");
+        
+        System.out.println("Lista palabras palíndromas en el arreglo B:");
         for (int contListaB = 0; contListaB < cantidad; contListaB++) {
             System.out.println(arregloB[contListaB]);
         }
-        System.out.println("Palabras del Arreglo A no están en el Arreglo B son: ");
-        for (int contGeneral = 0; contGeneral < cantidad; contGeneral++) {
-            if(!arregloA.equals(arregloB)){
-                System.out.println(arregloA[contGeneral]);
+        
+        // Mostrar palabras del arreglo A que no están en el arreglo B
+        System.out.println("Palabras del arreglo A que no están en el arreglo B son:");
+        for (int contListaA = 0; contListaA < cantidad; contListaA++) {
+            boolean encontrada = false;
+            for (int contListaB = 0; contListaB < cantidad; contListaB++) {
+                if (arregloA[contListaA].equals(arregloB[contListaB])) {
+                    encontrada = true;
+                    break;
+                }
+            }
+            if (!encontrada) {
+                System.out.println(arregloA[contListaA]);
             }
         }
     }
