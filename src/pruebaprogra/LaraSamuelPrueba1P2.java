@@ -4,17 +4,26 @@
  */
 package pruebaprogra;
 
-/**
- *
- * @author user
- */
+import java.util.Random;
+import java.util.Scanner;
+
 public class LaraSamuelPrueba1P2 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Random rndm = new Random();
+        Scanner lea = new Scanner(System.in);
+        
+         String palabras[ ] = { "radar", "level", "world", "civic", "java",
+                                "deified", "python", "rotor", "language", "madam", 
+                                "refer", "stats", "noon", "hello", "moon", "wow",
+                                "racecar", "kayak", "apple", "deed" };
+         
+        System.out.println("Ingresar el tamaño de los arreglos: ");
+        int cantidad=lea.nextInt();
+        
+         String arregloA[]=new String[cantidad];
+         String arregloB[]=new String[cantidad];
+         
     }
     
 }
